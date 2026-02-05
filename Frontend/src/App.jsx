@@ -2,12 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 
 const App = () => {
   const [notes, setNotes] = useState([]);
   function fetchNotes() {
-    axios.get(`${API_BASE}/api/notes`).then((res) => {
+    axios.get(`https://crud-app-lj6i.onrender.com/api/notes`).then((res) => {
       setNotes(res.data.notes);
     });
   }
@@ -20,7 +20,7 @@ const App = () => {
     const { title, description } = e.target.elements;
     console.log(title.value, description.value);
     axios
-      .post(`${API_BASE}/api/notes`, {
+      .post(`https://crud-app-lj6i.onrender.com/api/notes`, {
         title: title.value,
         description: description.value,
       })
@@ -31,7 +31,7 @@ const App = () => {
   }
 
   function handleDeleteNote(noteId) {
-    axios.delete(`${API_BASE}/api/notes/` + noteId).then((res) => {
+    axios.delete(`https://crud-app-lj6i.onrender.com/api/notes/` + noteId).then((res) => {
       console.log(res.data);
     });
 
